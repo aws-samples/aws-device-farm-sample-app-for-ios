@@ -8,8 +8,4 @@ Scenario: Ping Google
   Then I touch "HTTP"
   Then I fill in "navigation bar" with "http://www.google.com"
   Then I touch the "Go" button
-  Then I wait for the webview to load
-  Then the webview should be loaded
   And take picture
-
-
