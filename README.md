@@ -4,8 +4,10 @@ This is a sample native iOS app that contains many of the stock iOS components a
 
 You can use this app and example test suite as a reference for your own Device Farm tests.
 
-#### Notes
+##### **Notes**
 All of the views are programatically created within the app. Storyboard or XIB files are not used. This is to prevent merge conflicts in the future.
+
+Explicit delays are occasionally added to the tests to allow the page to fully render, they are commented as such in the code. 
 
 ## Getting Started
 In order to run this app within Device Farm you will need to create a local copy of this repository and build the application from source.

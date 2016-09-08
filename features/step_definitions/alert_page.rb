@@ -14,6 +14,8 @@
 #
 And(/^I am on the Alerts Page$/) do
   @current_page = page(AlertPage)
+  # Sleep to give page time to fully render
+  sleep(STEP_PAUSE)
 end
 
 Then(/^I should see the Modal Alert Page with text "([^"]*)" and button labelled "([^"]*)"$/) do |arg1, arg2|

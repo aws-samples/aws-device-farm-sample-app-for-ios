@@ -6,3 +6,7 @@ Feature: Input Controls
   Background: Navigate to Input Controls
     Given that I navigate to the "Inputs" menu category
     And I am on the Input Controls page
+
+  @TextView
+  Scenario: TextView
+    Then I should see a text view

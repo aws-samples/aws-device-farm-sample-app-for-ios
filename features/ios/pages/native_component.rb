@@ -12,9 +12,8 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 #
-
 class NativeComponent < ADFBasePage
-  # Ensures that the page is present by checking if it's title is displayed
+  # Ensures that the page is present by checking if its title is displayed
   def trait
     get_toolbar_title('Native Components')
   end
@@ -29,12 +28,12 @@ class NativeComponent < ADFBasePage
     wait_for_element_exists("UIScrollView")
   end
 
-  # Checks to see if the movie is playing by checking it's content description
+  # Checks to see if the movie is playing by checking its content description
   def check_for_movie_playing
 
   end
 
-  # Checks to see if the camera preview is ongoing by checking it's content description
+  # Checks to see if the camera preview is ongoing by checking its content description
   # Fails on devices with no camera support
   def check_for_camera_preview
     wait_for_element_exists("* id:'CameraView'")

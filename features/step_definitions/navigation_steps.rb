@@ -13,13 +13,12 @@
 # permissions and limitations under the License.
 #
 
-
 Given(/^that I navigate to the "([^"]*)" menu category$/) do |arg|
   touch ("UITabBarButtonLabel text:'#{arg}'")
 end
 
 Given(/^I select the "([^"]*)" option$/) do |arg|
-  touch("UITableViewCell text:'#{arg}'")
+  touch("UILabel text:'#{arg}'")
 end
 
 Given(/^I swipe to the "([^"]*)" tab$/) do |arg|
