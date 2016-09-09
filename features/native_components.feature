@@ -24,10 +24,10 @@ Feature: Native Components
     Then I should see a movie playing
     And I take a screenshot
 
-  Scenario: Camera
-    When I select the "Camera" label tile
-    Then I should see a camera preview
-    And I take a screenshot
+#  Scenario: Camera
+#    When I select the "Camera" label tile
+#    Then I should see a camera preview
+#    And I take a screenshot
   
   @OutOfView
   Scenario: Out of View Content

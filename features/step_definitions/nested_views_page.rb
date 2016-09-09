@@ -14,6 +14,8 @@
 #
 And(/^I am on the Nested View Page$/) do
   @current_page = page(NestedViewPage)
+  # Sleep to give page time to fully render
+  sleep(STEP_PAUSE)
 end
 
 When(/^I navigate up$/) do

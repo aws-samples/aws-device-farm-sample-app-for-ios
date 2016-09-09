@@ -15,3 +15,7 @@
 And(/^I am on the Input Controls page$/) do
   @current_page = page(InputControls)
 end
+
+Then(/^I should see a text view$/) do
+  @current_page.check_if_text_view_exists
+end

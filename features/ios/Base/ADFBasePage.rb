@@ -37,9 +37,6 @@ class ADFBasePage < Calabash::IBase
   end
 
   def check_if_label_contains_text(text)
-    puts(text)
     check_element_exists("UILabel text:'#{text}'")
   end
-
-
 end

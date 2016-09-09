@@ -1,5 +1,6 @@
 Given /^I am on the ADF Welcome Screen$/ do
   element_exists("view")
+  # Sleep to give page time to fully render
   sleep(STEP_PAUSE)
 end
 

@@ -15,5 +15,7 @@
 include Calabash::Cucumber
 
 class InputControls < ADFBasePage
-  
+  def check_if_text_view_exists
+  	wait_for_element_exists("UITextView text:'I am a textview'")
+  end
 end
