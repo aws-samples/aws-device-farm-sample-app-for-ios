@@ -7,7 +7,7 @@ You can use this app and example test suite as a reference for your own Device F
 ##### **Notes**
 All of the views are programatically created within the app. Storyboard or XIB files are not used. This is to prevent merge conflicts in the future.
 
-Explicit delays are occasionally added to the tests to allow the page to fully render, they are commented as such in the code. 
+Explicit delays are occasionally added to the tests to allow the page to fully render, they are commented as such in the code.
 
 ## Getting Started
 In order to run this app within Device Farm you will need to create a local copy of this repository and build the application from source.
@@ -71,3 +71,44 @@ Follow the steps in the official AWS Device Farm documentation for:
 |--------------|---------|
 |[Tab Bar](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITabBarController_Class/)|[source code](https://github.com/awslabs/aws-device-farm-sample-app-for-ios/blob/master/ADFiOSReferenceApp/MainTabBarViewController.m)|
 |[Page Viewer](https://developer.apple.com/library/prerelease/ios//documentation/UIKit/Reference/UIPageViewControllerClassReferenceClassRef/index.html)|[source code](https://github.com/awslabs/aws-device-farm-sample-app-for-ios/blob/master/ADFiOSReferenceApp/InputControlsPageViewController.m)|
+
+## Using XCUI Recorder
+
+#### Pre-Requisites
+
+1. Xcode 9 or above
+2. iOS simulator downloaded or a physical iOS device.
+
+#### Steps:
+
+1. Download the AWS Device Farm iOS sample app.
+2. Open the project in Xcode.
+3. We will generate tests XCUI using a new test target.
+  * Select File —> New —> Target —> iOS UI Testing Bundle. </br>
+  * Click Next. </br>
+  * Enter a Product Name </br>
+  For e.g. AWSDeviceFarmiOSReferenceAppUITests_Mock </br>
+  * If you have a apple developer account you can choose that for the Team option. </br>
+  * Choose Language as Swift. </br>
+  * Click Finish.
+4. In your project navigator you should now see the new target swift files generated. Open AWSDeviceFarmiOSReferenceAppUITests_Mock.swift.
+5. The file will have setUp(), tearDown() and a testExample() function. testExample() is the function where our test code generated through XCUI test recorder will live. Click inside the scope of function testExample().
+6. Select a target device for the recording. Click on the red record button present in the Debug bar as shown below. This will open up the selected simulator for you to record your UI interactions. </br>
+<img src="https://github.com/awslabs/aws-device-farm-sample-app-for-ios/blob/master/README_Images/record-xcui.png" width=1000 />
+
+7. When the app opens up on the simulator, inside the app click on More —> Alerts —> Modal --> OK
+8. Go to Xcode and press the record button again to stop recording the test. We now have the test code generated to test Alert section of the sample app.
+
+   We will add an XCAssert after the recording is complete to check if the modal view is present. This can done using the code snippet :
+```
+XCTAssertNotNil(app.staticTexts["This is a modal view"])
+```
+
+9. The project has existing XCUI tests which we do not want to run. We will disable the existing tests and only run our generated tests. Go to Product —> Scheme —>Edit Scheme. Select Build on left hand side. Uncheck all existing test targets except AWSDeviceFarmiOSReferenceApp and your generated test target AWSDeviceFarmiOSReferenceAppUITests_Mock
+10. For specifying which tests to build select Test on the left side. Click on ‘+’ . Choose only your test target. Click Add. Click Close in the main window.
+11. To build the tests for simulator go to Product —> Build for Testing. </br>
+**Note**: If you want to run on Device Farm you should build and run your tests against a real physical device. Tests build for simulator will not run on real devices. For the purpose of the instructions here we are going to consider simulator.
+12. To run the tests go to Product —> Test. This will open up the simulator and run the tests.
+13. We want to package and upload these tests to Device Farm to test it against a number of devices. </br>
+To package the tests go to your Project explorer on the left hand side. Right click on AWSDeviceFarmiOSReferenceApp under Products folder —> Show in Finder. This will take to the location of your app and tests build output. Look for the runner app of your tests: AWSDeviceFarmiOSReferenceAppUITests_Mock-Runner. Create a folder named “Payload” case-sensitive anywhere in your file system. Copy the tests runner app inside Payload. Right click on Payload —> Compress Payload. Rename the extensions of the compressed zip file to .ipa. When asked if you want to keep .ipa option choose yes. This is your test IPA that can be uploaded to AWS Device Farm.
+14. You can built an IPA of the app using your developer account or a pre-built version of the app and tests can be found here.
