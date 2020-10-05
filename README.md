@@ -1,6 +1,6 @@
 # AWS Device Farm Sample App for iOS
 
-This is a sample native iOS app that contains many of the stock iOS components and elements. It also contains multiple [Calabash tests](https://github.com/awslabs/aws-device-farm-sample-app-for-ios/tree/master/features) to get you started. You can also use this app with the AWS Device Farm [Built-in Fuzz Test](http://docs.aws.amazon.com/devicefarm/latest/developerguide/test-types-built-in-fuzz.html).
+This is a sample native iOS app that contains many of the stock iOS components and elements. It also contains multiple [Calabash tests](https://github.com/awslabs/aws-device-farm-sample-app-for-ios/tree/master/features) to get you started. You can also use this app with the AWS Device Farm [Built-in Fuzz Test](http://docs.aws.amazon.com/devicefarm/latest/developerguide/test-types-built-in-fuzz.html). A suite of Python/Appium tests can be found at [aws-samples/aws-device-farm-appium-python-tests-for-ios-sample-app](https://github.com/aws-samples/aws-device-farm-appium-python-tests-for-ios-sample-app).
 
 You can use this app and example test suite as a reference for your own Device Farm tests.
 
